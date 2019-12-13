@@ -38,8 +38,9 @@ ext {
 
     //Retrofit for making network  request
     retrofitVersion = '2.7.0'
-    moshiVersion="1.9.2"
-    okhttp3Version="3.2.0"
+//    moshiVersion="1.9.2"
+    okhttp3Version = "3.2.0"
+    okhttpLoggingVersion = '3.11.0'
 
     dagger2Version = "2.25.2"
 

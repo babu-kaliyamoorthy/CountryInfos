@@ -36,17 +36,26 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$rootProject.appcompatVersion"
     implementation "androidx.core:core-ktx:$rootProject.corektxVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
+
+
+    // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleExtensionVersion"
+    implementation "androidx.lifecycle:lifecycle-common:$rootProject.lifecycleExtensionVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$rootProject.lifecycleExtensionVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleExtensionVersion"
 
-    implementation "com.squareup.moshi:moshi-kotlin:$rootProject.moshiVersion"
+
+  /*  implementation "com.squareup.moshi:moshi-kotlin:$rootProject.moshiVersion"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$rootProject.moshiVersion"
-
+*/
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofitVersion"
+//    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofitVersion"
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
 
-   // implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttp3Version"
- //   implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    // Retrofit
+//    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$rootProject.retrofitCoroutinesVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpLoggingVersion"
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
