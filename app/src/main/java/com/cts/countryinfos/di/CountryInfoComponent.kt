@@ -1,5 +1,6 @@
 package com.cts.countryinfos.di
 
+import com.cts.countryinfos.ui.CountryInfoListViewModel
 import dagger.Component
 import javax.inject.Singleton
 
@@ -9,6 +10,8 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [NetworkModule::class])
 interface CountryInfoComponent {
+
+    fun inject(countryInfoListViewModel: CountryInfoListViewModel)
 
     @Component.Builder
     interface Builder {

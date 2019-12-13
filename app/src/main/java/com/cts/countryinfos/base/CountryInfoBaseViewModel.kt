@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.cts.countryinfos.di.CountryInfoComponent
 import com.cts.countryinfos.di.DaggerCountryInfoComponent
 import com.cts.countryinfos.di.NetworkModule
+import com.cts.countryinfos.ui.CountryInfoListViewModel
 
 /**
  * Created by Babu Kaliyamoorthy on 12/12/19.
@@ -20,7 +21,7 @@ abstract class CountryInfoBaseViewModel : ViewModel() {
 
     private fun inject() {
         when (this) {
-        //inject required dependencies from here in viewmodel.
+            is CountryInfoListViewModel -> countryInfoComponent.inject(this)
         }
     }
 }
