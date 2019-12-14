@@ -4,8 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cts.countryinfos.CountryInfoListActivity
+import com.cts.countryinfos.R
 import com.cts.countryinfos.databinding.CountryInfoListItemBinding
 import com.cts.countryinfos.model.Info
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.country_info_list_item.view.*
 
 /**
  * Created by Babu Kaliyamoorthy on 13/12/19.
@@ -35,8 +38,11 @@ class CountryInfosListAdapter(
             fun bind(item: Info) {
                 with(binding) {
 
-                    //binding.csvFileHeaders = IssueDetail.Headers
                 binding.listItemDta = item
+                    Picasso.get()
+                        .load(item.imageHref)
+                        .placeholder(R.drawable.placeholder)
+                        .into(binding.root.ivInfoImage)
                 binding.executePendingBindings()
             }
         }

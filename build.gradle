@@ -41,7 +41,7 @@ ext {
     okhttp3Version = "3.2.0"
     okhttpLoggingVersion = '3.11.0'
 
-
+    picassoVersion = '2.71828'
     junitVersion = '4.12'
     testRunnerVersion = '1.2.0'
     espressoCoreVersion = '3.2.0'

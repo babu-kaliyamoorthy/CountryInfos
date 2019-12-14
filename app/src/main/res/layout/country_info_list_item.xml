@@ -20,60 +20,53 @@
         android:layout_margin="14dp">
 
         <TextView
-            android:id="@+id/tvHeaderFirstName"
+            android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:maxLines="2"
             android:paddingRight="5dp"
+            android:textSize="18sp"
             android:text='@{!TextUtils.isEmpty(listItemDta.title) ? listItemDta.title:""}'
-            android:textColor="#4d6191"
-            android:textSize="20sp"
+            android:textColor="#5b6e99"
             android:textStyle="bold|italic"
-            app:layout_constraintBottom_toTopOf="@+id/tvHeaderSurName"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="Murdocs needed counselling after hacking scandel,says magazine"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-       <!-- <TextView
-            android:id="@+id/tvHeaderSurName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="3"
-            android:paddingRight="5dp"
-            android:text='@{!TextUtils.isEmpty(listItemDta.description) ? listItemDta.description:""}'
-            android:textColor="#6d6d6d"
-            android:textSize="16sp"
-            android:textStyle="normal"
-            app:layout_constraintRight_toLeftOf="@id/imageView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvHeaderFirstName"
-            tools:text="NEW YORK: The British phone-hacking scandal brought simmering tensions." />-->
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Murdocs needed counselling after hacking scandel,says magazine" />
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
+            android:id="@+id/ic_right_arrow"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintRight_toRightOf="parent"
-            android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvHeaderFirstName"
-             />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintWidth_percent="0.1"
+            app:srcCompat="@drawable/ic_right_arrow" />
+
+        <ImageView
+            android:id="@+id/ivInfoImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent="0.8"
+            app:layout_constraintRight_toLeftOf="@+id/ic_right_arrow"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            app:layout_constraintWidth_percent="0.3"
+            />
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvDescription"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:text="NEW YORK: The British phone-hacking scandal brought simmering tensions."
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvHeaderFirstName"
+            android:text='@{!TextUtils.isEmpty(listItemDta.description) ? listItemDta.description:""}'
+            android:textColor="#727272"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/imageView"
-             />
-
+            app:layout_constraintLeft_toLeftOf="@id/tvTitle"
+            app:layout_constraintRight_toLeftOf="@id/ivInfoImage"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintWidth_percent="0.6"
+            tools:text="NEW YORK: The British phone-hacking scandal brought simmering tensions." />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
