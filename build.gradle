@@ -31,20 +31,17 @@ ext {
     appcompatVersion = '1.1.0'
     corektxVersion = '1.1.0'
     constraintLayoutVersion = '1.1.3'
+    recyclerViewVersion = '1.0.0'
 
     kotlinVersion = '1.3.50'
     lifecycleExtensionVersion = '2.1.0'
     coroutinesVersion = '1.3.2'
 
-    //Retrofit for making network  request
     retrofitVersion = '2.7.0'
-//    moshiVersion="1.9.2"
     okhttp3Version = "3.2.0"
     okhttpLoggingVersion = '3.11.0'
 
-    dagger2Version = "2.25.2"
 
-    //Testing dependencies
     junitVersion = '4.12'
     testRunnerVersion = '1.2.0'
     espressoCoreVersion = '3.2.0'

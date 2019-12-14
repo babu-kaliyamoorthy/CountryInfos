@@ -1,0 +1,80 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="listItemDta"
+            type="com.cts.countryinfos.model.Info" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="14dp">
+
+        <TextView
+            android:id="@+id/tvHeaderFirstName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingRight="5dp"
+            android:text='@{!TextUtils.isEmpty(listItemDta.title) ? listItemDta.title:""}'
+            android:textColor="#4d6191"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toTopOf="@+id/tvHeaderSurName"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Murdocs needed counselling after hacking scandel,says magazine"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+       <!-- <TextView
+            android:id="@+id/tvHeaderSurName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:paddingRight="5dp"
+            android:text='@{!TextUtils.isEmpty(listItemDta.description) ? listItemDta.description:""}'
+            android:textColor="#6d6d6d"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            app:layout_constraintRight_toLeftOf="@id/imageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvHeaderFirstName"
+            tools:text="NEW YORK: The British phone-hacking scandal brought simmering tensions." />-->
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvHeaderFirstName"
+             />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            tools:text="NEW YORK: The British phone-hacking scandal brought simmering tensions."
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvHeaderFirstName"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/imageView"
+             />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

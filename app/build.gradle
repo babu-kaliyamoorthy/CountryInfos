@@ -23,6 +23,10 @@ android {
         }
     }
 
+    dataBinding {
+        enabled = true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -44,25 +48,19 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel:$rootProject.lifecycleExtensionVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleExtensionVersion"
 
-
-  /*  implementation "com.squareup.moshi:moshi-kotlin:$rootProject.moshiVersion"
-    kapt "com.squareup.moshi:moshi-kotlin-codegen:$rootProject.moshiVersion"
-*/
-    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
-//    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofitVersion"
-    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
-
     // Retrofit
-//    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$rootProject.retrofitCoroutinesVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpLoggingVersion"
+
+
+    implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerViewVersion"
+    implementation "androidx.recyclerview:recyclerview-selection:$rootProject.recyclerViewVersion"
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
 
-    implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
-    kapt "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
-    compileOnly "org.glassfish:javax.annotation:3.1.1"
 
     //Testing
     testImplementation "junit:junit:$rootProject.junitVersion"
