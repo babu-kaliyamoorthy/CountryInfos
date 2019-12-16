@@ -8,7 +8,7 @@ View , Model and DataBinding .
 <br/>2.App is designed using MVVM pattern and Android architecture components ViewModel, LiveData and DataBinding.
 <br/>3.Developed App in Kotlin with Coroutines API.
 <br/>4.App supports both portrait and landscape modes.
-<br/>5.Written Unit test cases for the modules.
+
 
 
 <p align="center">
