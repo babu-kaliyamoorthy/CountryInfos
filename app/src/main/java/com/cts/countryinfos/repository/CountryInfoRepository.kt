@@ -53,9 +53,5 @@ class CountryInfoRepository(val countryInfoRemoteDataSource: CountryInfoRemoteDa
             }
         }
 
-        @JvmStatic
-        fun destroyInstance() {
-            INSTANCE = null
-        }
     }
 }

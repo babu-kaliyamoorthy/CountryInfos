@@ -1,6 +1,8 @@
 package com.cts.countryinfos
 
+import android.graphics.Color.WHITE
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -8,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cts.countryinfos.base.CountryInfoBaseActivity
 import com.cts.countryinfos.databinding.ActivityCountryInfoBinding
+import com.cts.countryinfos.model.Country
 import com.cts.countryinfos.model.Info
 import com.cts.countryinfos.network.CountrtyInfoRemoteDataSourceImpl
 import com.cts.countryinfos.repository.CountryInfoRepository
@@ -22,22 +25,24 @@ class CountryInfoListActivity : CountryInfoBaseActivity() {
     private lateinit var countryInfoListViewModel: CountryInfoListViewModel
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var countryInfosListAdapter: CountryInfosListAdapter
-    private lateinit var activityMainBinding: ActivityCountryInfoBinding
+    private lateinit var activityCountryInfoBinding: ActivityCountryInfoBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_country_info)
+        activityCountryInfoBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_country_info)
 
-        initializeIssuesListViewModel()
-        initializeIssueListAdapter()
+        initializeCountryInfoListViewModel()
+        initializeCountryInfoListAdapter()
 
-        activityMainBinding.countryInfoViewModel = countryInfoListViewModel
-        activityMainBinding.lifecycleOwner = this
-        getIssueList()
+        activityCountryInfoBinding.countryInfoViewModel = countryInfoListViewModel
+        activityCountryInfoBinding.lifecycleOwner = this
+        getCountryInfo()
+        setupPullToRefresh()
     }
 
-    private fun initializeIssuesListViewModel() {
+    private fun initializeCountryInfoListViewModel() {
 
         countryInfoListViewModel = ViewModelProviders.of(
             this,
@@ -47,6 +52,8 @@ class CountryInfoListActivity : CountryInfoBaseActivity() {
                 )
             )
         ).get(CountryInfoListViewModel::class.java)
+
+        countryInfoListViewModel.country.observe(this, country)
         countryInfoListViewModel.rows.observe(this, info)
 
 
@@ -55,7 +62,7 @@ class CountryInfoListActivity : CountryInfoBaseActivity() {
     /**
      * This method is used to do a normal static set up for recyclerview and adapter.
      */
-    private fun initializeIssueListAdapter() {
+    private fun initializeCountryInfoListAdapter() {
         layoutManager = LinearLayoutManager(this)
         recycler_view.layoutManager = layoutManager
         countryInfosListAdapter =
@@ -63,13 +70,30 @@ class CountryInfoListActivity : CountryInfoBaseActivity() {
         recycler_view.adapter = countryInfosListAdapter
     }
 
-    private fun getIssueList() {
-        // if (countryInfoListViewModel != null && countryInfoListViewModel.rows.value?.size == 0) {
+    private fun getCountryInfo() {
         countryInfoListViewModel.fetchCountryInfoList()
-        // }
     }
 
     private val info = Observer<List<Info>> {
         countryInfosListAdapter.update(it)
+    }
+
+    private val country = Observer<Country> {
+        //Update title bar
+        supportActionBar?.title = it.title
+    }
+
+    private fun setupPullToRefresh() {
+        itemsswipetorefresh.setProgressBackgroundColorSchemeColor(
+            ContextCompat.getColor(
+                this,
+                R.color.colorPrimary
+            )
+        )
+        itemsswipetorefresh.setColorSchemeColors(WHITE)
+        itemsswipetorefresh.setOnRefreshListener {
+            getCountryInfo()
+            itemsswipetorefresh.isRefreshing = false
+        }
     }
 }
