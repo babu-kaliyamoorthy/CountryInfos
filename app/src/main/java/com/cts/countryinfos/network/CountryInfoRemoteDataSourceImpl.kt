@@ -10,7 +10,7 @@ import retrofit2.HttpException
 /**
  * Created by Babu Kaliyamoorthy on 13/12/19.
  */
-class CountrtyInfoRemoteDataSourceImpl private constructor(val countryInfoApiService: CountryInfoApiService) :
+class CountryInfoRemoteDataSourceImpl private constructor(private val countryInfoApiService: CountryInfoApiService) :
     CountryInfoRemoteDataSource {
 
     override suspend fun getCountryInfos(): ApiResponse<Country> = withContext(Dispatchers.IO) {
@@ -31,6 +31,6 @@ class CountrtyInfoRemoteDataSourceImpl private constructor(val countryInfoApiSer
     }
 
     companion object {
-        fun newInstance() = CountrtyInfoRemoteDataSourceImpl(CountryInfoApiService.create())
+        fun newInstance() = CountryInfoRemoteDataSourceImpl(CountryInfoApiService.create())
     }
 }

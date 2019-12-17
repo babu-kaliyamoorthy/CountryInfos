@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cts.countryinfos.base.CountryInfoBaseActivity
 import com.cts.countryinfos.databinding.ActivityCountryInfoBinding
 import com.cts.countryinfos.model.Country
-import com.cts.countryinfos.model.Info
-import com.cts.countryinfos.network.CountrtyInfoRemoteDataSourceImpl
+import com.cts.countryinfos.network.CountryInfoRemoteDataSourceImpl
 import com.cts.countryinfos.repository.CountryInfoRepository
 import com.cts.countryinfos.ui.CountryInfoListViewModel
 import com.cts.countryinfos.ui.adapter.CountryInfosListAdapter
@@ -32,10 +31,8 @@ class CountryInfoListActivity : CountryInfoBaseActivity() {
 
         activityCountryInfoBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_country_info)
-
         initializeCountryInfoListViewModel()
         initializeCountryInfoListAdapter()
-
         activityCountryInfoBinding.countryInfoViewModel = countryInfoListViewModel
         activityCountryInfoBinding.lifecycleOwner = this
         getCountryInfo()
@@ -48,15 +45,12 @@ class CountryInfoListActivity : CountryInfoBaseActivity() {
             this,
             CountryInfoListViewModel.FACTORY(
                 CountryInfoRepository.getInstance(
-                    CountrtyInfoRemoteDataSourceImpl.newInstance()
+                    CountryInfoRemoteDataSourceImpl.newInstance()
                 )
             )
         ).get(CountryInfoListViewModel::class.java)
 
         countryInfoListViewModel.country.observe(this, country)
-        countryInfoListViewModel.rows.observe(this, info)
-
-
     }
 
     /**
@@ -66,7 +60,10 @@ class CountryInfoListActivity : CountryInfoBaseActivity() {
         layoutManager = LinearLayoutManager(this)
         recycler_view.layoutManager = layoutManager
         countryInfosListAdapter =
-            CountryInfosListAdapter(this, countryInfoListViewModel.rows.value ?: emptyList())
+            CountryInfosListAdapter(
+                this,
+                countryInfoListViewModel.country.value?.rows ?: emptyList()
+            )
         recycler_view.adapter = countryInfosListAdapter
     }
 
@@ -74,13 +71,12 @@ class CountryInfoListActivity : CountryInfoBaseActivity() {
         countryInfoListViewModel.fetchCountryInfoList()
     }
 
-    private val info = Observer<List<Info>> {
-        countryInfosListAdapter.update(it)
-    }
 
     private val country = Observer<Country> {
         //Update title bar
         supportActionBar?.title = it.title
+        // update the list
+        it.rows?.let { it1 -> countryInfosListAdapter.update(it1) }
     }
 
     private fun setupPullToRefresh() {

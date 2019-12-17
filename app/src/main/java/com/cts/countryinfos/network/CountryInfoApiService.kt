@@ -20,12 +20,13 @@ interface CountryInfoApiService {
 
     companion object {
         fun create(): CountryInfoApiService {
-
             val logging = HttpLoggingInterceptor()
             logging.level = HttpLoggingInterceptor.Level.BODY
+
             val client: OkHttpClient = OkHttpClient.Builder()
                 .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .build()
+
             val retrofit = Retrofit.Builder()
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .baseUrl(COUNTRY_INFO_BASE_URL)

@@ -41,11 +41,8 @@ class CountryInfosListAdapter(
         }
     }
 
-
     class CountryInfoItemViewHolder(private val binding: CountryInfoListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
-
         fun bind(
             info: Info,
             context: CountryInfoListActivity
@@ -61,16 +58,10 @@ class CountryInfosListAdapter(
                 binding.root.setOnClickListener {
                     val intent = CountryInfoListItemDetailActivity.newIntent(context, info)
                     context.startActivity(intent)
-
-
                 }
                 binding.executePendingBindings()
-
-
             }
         }
-
-
     }
 
     fun update(countryInfoList1: List<Info>) {
