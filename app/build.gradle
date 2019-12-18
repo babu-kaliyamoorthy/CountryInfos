@@ -64,8 +64,14 @@ dependencies {
     implementation "com.squareup.picasso:picasso:$rootProject.picassoVersion"
 
 
-    //Testing
     testImplementation "junit:junit:$rootProject.junitVersion"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
     androidTestImplementation "androidx.test:runner:$rootProject.testRunnerVersion"
+    //To Mock the kotlin classes as all Kotlin classes are defined final in default
+    testImplementation "org.mockito:mockito-inline:$rootProject.mockitoInlineVersion"
+    //To solve the java.lang.IllegalStateException: Mockito.any() must not be null while writing the test cases..
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$rootProject.mockitokotlinCoreVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoCoreVersion"
+    //To test coroutines suspend function
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$rootProject.coroutinesVersion"
 }

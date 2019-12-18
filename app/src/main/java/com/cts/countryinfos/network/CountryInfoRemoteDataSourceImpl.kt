@@ -27,7 +27,6 @@ class CountryInfoRemoteDataSourceImpl private constructor(private val countryInf
         } catch (ex: Throwable) {
             ApiResponse.ErrorResponse(RemoteDataNotFoundException())
         }
-
     }
 
     companion object {

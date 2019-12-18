@@ -26,13 +26,17 @@ class CountryInfoListViewModel(private val countryInfoRepository: CountryInfoRep
         val FACTORY = viewModelFactory(::CountryInfoListViewModel)
     }
 
-    private var _isFetchInProgress: MutableLiveData<Boolean> = MutableLiveData()
+
+    private val _isFetchInProgress = MutableLiveData<Boolean>()
     val isFetchInProgress: LiveData<Boolean>
         get() = _isFetchInProgress
 
-    val country: MutableLiveData<Country> by lazy {
+    private val _country: MutableLiveData<Country> by lazy {
         MutableLiveData<Country>()
     }
+
+    val country: LiveData<Country>
+        get() = _country
 
 
     fun fetchCountryInfoList() {
@@ -48,7 +52,7 @@ class CountryInfoListViewModel(private val countryInfoRepository: CountryInfoRep
                 val response = countryInfoRepository.getCountryInfos()
 
                 if (response is ApiResponse.SuccessResponse) {
-                    country.postValue(response.data)
+                    _country.postValue(response.data)
                     Log.i("CountryInfoRepository", "json data is " + Gson().toJson(response.data))
                 }
 

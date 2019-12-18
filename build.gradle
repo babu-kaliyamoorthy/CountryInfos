@@ -45,6 +45,8 @@ ext {
     junitVersion = '4.12'
     testRunnerVersion = '1.2.0'
     espressoCoreVersion = '3.2.0'
+    mockitoInlineVersion = '3.1.0'
+    mockitokotlinCoreVersion = '2.2.0'
 }
 
 
